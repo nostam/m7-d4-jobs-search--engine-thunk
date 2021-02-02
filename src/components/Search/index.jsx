@@ -14,11 +14,12 @@ export default class Home extends React.Component {
         [e.currentTarget.name]: e.currentTarget.value,
       },
     });
-    if (e.keyCode === 13 || e.key === "Enter") {
+  };
+  triggersSearch = (e) => {
+    if (e.key === "Enter") {
       this.props.searchJobs(this.state.query);
     }
   };
-
   render() {
     const { query } = this.state;
     return (
@@ -35,21 +36,23 @@ export default class Home extends React.Component {
                 value={this.state.query.position}
                 name="position"
                 onChange={(e) => this.handleSearchInput(e)}
+                onKeyPress={(e) => this.triggersSearch(e)}
               />
             </form>
           </Grid>
           <Grid item sm={2}>
-            <form noValidate autoComplete="on">
-              <TextField
-                id="standard-basic"
-                label="in which city?"
-                fullWidth
-                margin="normal"
-                value={this.state.query.location}
-                name="location"
-                onChange={(e) => this.handleSearchInput(e)}
-              />
-            </form>
+            {/* <form noValidate autoComplete="on"> */}
+            <TextField
+              id="standard-basic"
+              label="in which city?"
+              fullWidth
+              margin="normal"
+              value={this.state.query.location}
+              name="location"
+              onChange={(e) => this.handleSearchInput(e)}
+              onKeyPress={(e) => this.triggersSearch(e)}
+            />
+            {/* </form> */}
           </Grid>
 
           <Button onClick={() => this.props.searchJobs(query)}>Search</Button>

@@ -37,7 +37,6 @@ export default class JobList extends Component {
                   <Typography color="textSecondary">{job.location}</Typography>
                   <Typography variant="body2" component="p">
                     {job.description}
-                    {'"a benevolent smile"'}
                   </Typography>
                 </CardContent>
                 <CardActions>

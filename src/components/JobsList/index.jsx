@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Typography,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-} from "@material-ui/core";
+import { LinearProgress, Grid } from "@material-ui/core";
+import JobCard from "../JobCard";
+import JobDetail from "../JobDetail";
+import "./styles.css";
 export default class JobList extends Component {
-  state = { jobs: "" };
+  state = { jobs: "", selectedJob: null };
+  handleSelectedJob = (job) => {
+    this.setState({ selectedJob: job });
+  };
   componentDidMount = () => {
     this.setState({ jobs: this.props.jobs });
   };
@@ -19,34 +18,29 @@ export default class JobList extends Component {
     }
   };
   render() {
-    const { jobs } = this.props;
+    const { jobs, loading } = this.props;
     return (
       <div>
-        {jobs.length > 0 &&
-          jobs.map((job) => {
-            return (
-              <Card key={job.id}>
-                <CardMedia image={job.company_logo} title={job.company} />
-                <CardContent>
-                  <Typography color="textSecondary" gutterBottom>
-                    {job.type}
-                  </Typography>
-                  <Typography variant="h5" component="h2">
-                    {job.title}
-                  </Typography>
-                  <Typography color="textSecondary">{job.location}</Typography>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: job.description }}
-                  ></div>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" herf={job.how_to_apply}>
-                    Learn More @ {job.company_url}
-                  </Button>
-                </CardActions>
-              </Card>
-            );
-          })}
+        {loading ? (
+          <LinearProgress />
+        ) : (
+          <Grid container>
+            <Grid item xs={3} className="JobsListCol">
+              {jobs.map((job) => {
+                return (
+                  <JobCard
+                    job={job}
+                    key={job.id}
+                    selected={this.handleSelectedJob}
+                  />
+                );
+              })}
+            </Grid>
+            <Grid item xs={9} className="JobsListCol">
+              <JobDetail job={this.state.selectedJob} />
+            </Grid>
+          </Grid>
+        )}
       </div>
     );
   }

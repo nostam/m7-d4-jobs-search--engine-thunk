@@ -1,7 +1,11 @@
 .HomeDiv {
   margin: 2rem;
-  /* justify-content: center; */
-  /* align-items: center; */
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
   display: flex !important;
-  flex-direction: column;
+  flex-direction: row;
+}
+.searchLogo {
+  align-self: center;
 }

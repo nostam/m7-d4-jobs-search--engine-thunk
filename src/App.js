@@ -3,10 +3,11 @@ import { Route } from "react-router-dom";
 import Search from "./components/Search";
 import JobsList from "./components/JobsList";
 class App extends React.Component {
-  state = { err: null, jobs: [] };
+  state = { err: null, jobs: [], loading: false };
   url = "/positions.json?";
   searchJobs = async (query) => {
     try {
+      this.setState({ loading: true });
       const res = await fetch(
         `${this.url}desciption=${query.position}&location=${query.location}`,
         {
@@ -19,14 +20,14 @@ class App extends React.Component {
       if (res.ok) {
         const payload = await res.json();
         console.log(payload);
-        this.setState({ jobs: payload });
+        this.setState({ jobs: payload, loading: false });
       }
     } catch (error) {
       console.log(error);
     }
   };
   render() {
-    const { jobs } = this.state;
+    const { jobs, loading } = this.state;
     return (
       <div className="App">
         <Route
@@ -37,7 +38,9 @@ class App extends React.Component {
         {/* <Route path="/job/:slug" render={(props) => <Job {...props} /> */}
         <Route
           path="/"
-          render={(props) => <JobsList {...props} jobs={jobs} />}
+          render={(props) => (
+            <JobsList {...props} jobs={jobs} loading={loading} />
+          )}
         />
       </div>
     );

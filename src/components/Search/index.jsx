@@ -24,24 +24,25 @@ export default class Home extends React.Component {
     const { query } = this.state;
     return (
       <div className="HomeDiv">
-        <FiGithub size="48" title="Github Job Search" />
-        <Grid container spacing={2}>
+        <Grid container>
+          <FiGithub
+            size="48"
+            title="Github Job Search"
+            className="searchLogo"
+          />
           <Grid item sm={9}>
-            <form>
-              <TextField
-                id="standard-basic"
-                label="Are you looking for a 👔?"
-                fullWidth
-                margin="normal"
-                value={this.state.query.position}
-                name="position"
-                onChange={(e) => this.handleSearchInput(e)}
-                onKeyPress={(e) => this.triggersSearch(e)}
-              />
-            </form>
+            <TextField
+              id="standard-basic"
+              label="Are you looking for a 👔?"
+              fullWidth
+              margin="normal"
+              value={this.state.query.position}
+              name="position"
+              onChange={(e) => this.handleSearchInput(e)}
+              onKeyPress={(e) => this.triggersSearch(e)}
+            />
           </Grid>
           <Grid item sm={2}>
-            {/* <form noValidate autoComplete="on"> */}
             <TextField
               id="standard-basic"
               label="in which city?"
@@ -52,9 +53,7 @@ export default class Home extends React.Component {
               onChange={(e) => this.handleSearchInput(e)}
               onKeyPress={(e) => this.triggersSearch(e)}
             />
-            {/* </form> */}
           </Grid>
-
           <Button onClick={() => this.props.searchJobs(query)}>Search</Button>
         </Grid>
       </div>

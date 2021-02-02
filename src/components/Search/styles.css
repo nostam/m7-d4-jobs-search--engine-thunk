@@ -1,0 +1,7 @@
+.HomeDiv {
+  margin: 2rem;
+  /* justify-content: center; */
+  /* align-items: center; */
+  display: flex !important;
+  flex-direction: column;
+}

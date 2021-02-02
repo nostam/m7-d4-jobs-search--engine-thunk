@@ -35,9 +35,11 @@ export default class JobList extends Component {
                     {job.title}
                   </Typography>
                   <Typography color="textSecondary">{job.location}</Typography>
-                  <Typography variant="body2" component="p">
-                    {job.description}
-                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    value={job.description}
+                  ></Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="small" herf={job.how_to_apply}>

@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Paper, Typography, Grid } from "@material-ui/core";
+import React from "react";
+import { Paper, Typography } from "@material-ui/core";
 import parse from "html-react-parser";
 export default function JobDetail(props) {
-  const [job, setJob] = useState("");
-  useEffect(() => {
-    setJob(props.job);
-  }, [props]);
   return (
     <div>
       {props.job !== null && (

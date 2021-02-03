@@ -1,6 +1,5 @@
 .HomeDiv {
   margin: 1rem 2rem;
-  height: 10vh;
   justify-content: center;
   align-items: center;
   display: flex !important;
@@ -10,4 +9,11 @@
 }
 .searchLogo {
   align-self: center;
+}
+
+.search-city,
+.search-fulltime {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

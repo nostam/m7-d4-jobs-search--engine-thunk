@@ -35,7 +35,7 @@ class Search extends React.Component {
             className="searchLogo"
             onClick={() => this.props.history.push("/")}
           />
-          <Grid item sm={9}>
+          <Grid item xs={5} sm={6} md={7} lg={8}>
             <TextField
               id="search-position"
               label="Are you looking for a 👔?"
@@ -47,7 +47,7 @@ class Search extends React.Component {
               onKeyPress={(e) => this.triggersSearch(e)}
             />
           </Grid>
-          <Grid item sm={1}>
+          <Grid item xs={1}>
             <TextField
               id="search-city"
               label="in which city?"
@@ -59,8 +59,9 @@ class Search extends React.Component {
               onKeyPress={(e) => this.triggersSearch(e)}
             />
           </Grid>
-          <Grid item sm={1}>
+          <Grid item xs={1}>
             <TextField
+              id="search-fulltime"
               label="Full Time?"
               fullWidth
               margin="normal"

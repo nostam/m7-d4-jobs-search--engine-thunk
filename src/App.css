@@ -1,9 +1,15 @@
 .App {
+  margin: 0;
+  padding: 0;
   text-align: center;
-  overflow-y: hidden;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
-
-.App-logo {
+.App::--webkit-scrollbar {
+  display: none;
+}
+.app .App-logo {
   height: 40vmin;
   pointer-events: none;
 }

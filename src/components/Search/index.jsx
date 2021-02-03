@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, TextField, Button, Badge, Tooltip } from "@material-ui/core";
 import { FiGithub } from "react-icons/fi";
-import { MdFavorite } from "react-icons/md";
+import { MdBookmark } from "react-icons/md";
 import { connect } from "react-redux";
 // import Cities from "cities-list";
 import "./styles.css";
@@ -75,10 +75,10 @@ class Search extends React.Component {
               badgeContent={this.props.bookmarks.length}
               max={99}
               color="secondary"
-              onClick={() => this.props.history.push("/favourite")}
+              onClick={() => this.props.history.push("/bookmarks")}
               style={{ alignSelf: "center", margin: "1rem" }}
             >
-              <MdFavorite size="24" color="grey" />
+              <MdBookmark size="24" color="grey" />
             </Badge>
           </Tooltip>
         </Grid>

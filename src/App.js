@@ -50,7 +50,7 @@ class App extends React.Component {
           )}
         />
         <Route
-          path="/favourite"
+          path="/bookmarks"
           exact
           render={(props) => (
             <JobsList

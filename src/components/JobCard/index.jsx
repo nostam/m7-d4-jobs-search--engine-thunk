@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { MdFavorite, MdDone } from "react-icons/md";
+import { MdBookmark, MdDone } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 const useStyles = makeStyles({
   root: {
@@ -54,13 +54,13 @@ function JobCard({ job, selected }) {
       <CardActions disableSpacing className={classes.footer}>
         <Button style={{ marginRight: "auto" }}>Learn More</Button>
         <IconButton
-          aria-label="add to favorites"
+          aria-label="add to bookmarks"
           onClick={() => dispatch({ type: "TOGGLE_BOOKMARK", payload: job })}
         >
-          <MdFavorite
+          <MdBookmark
             style={{
               color: bookmarks.find((entry) => entry.id === job.id)
-                ? "#dc004e"
+                ? "dodgerblue"
                 : "grey",
             }}
           />

@@ -6,11 +6,15 @@
   flex-direction: row;
   overflow: hidden;
   flex-wrap: nowrap;
+  width: auto;
 }
 .searchLogo {
   align-self: center;
+  margin: 0 1rem 0 0;
 }
-
+.navIcons {
+  margin: auto 1rem;
+}
 .search-city,
 .search-fulltime {
   white-space: nowrap;

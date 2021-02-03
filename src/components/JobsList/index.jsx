@@ -20,7 +20,7 @@ export default class JobList extends Component {
   render() {
     // const { jobs, loading } = this.props;
     return (
-      <div>
+      <div style={{ overflowX: "hidden" }}>
         {this.props.loading ? (
           <LinearProgress />
         ) : (

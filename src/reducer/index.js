@@ -1,24 +1,18 @@
-export default function rootReducer(
-  state = { bookmarks: [], selectedJob: {} },
-  action
-) {
+import { initialState } from "../store";
+export default function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case "TOGGLE_BOOKMARK":
+      return {
+        ...state,
+        bookmarks:
+          state.bookmarks.length === 0 ||
+          state.bookmarks.some((entry) => entry.id !== action.payload.id)
+            ? [...state.bookmarks, action.payload]
+            : state.bookmarks.filter((job) => job.id !== action.payload.id),
+      };
     case "ADD_TO_BOOKMARK":
-      console.log(state.bookmarks);
-      return Object.assign({}, state, {
-        bookmarks: state.bookmarks.some((entry) => {
-          if (entry.id !== action.payload.id) {
-            return [...state.bookmarks, action.payload];
-          }
-
-          // return Object.assign({}, entry, {
-          //   ...state,
-          //   bookmarks: state.bookmarks.filter(
-          //     (job) => job.id !== action.payload.id
-          //   ),
-          // });
-        }),
-      });
+      console.log(action.payload);
+      return { ...state, bookmarks: [...state.bookmarks, action.payload] };
     case "REMOVE_FROM_BOOKMARK":
       return {
         ...state,

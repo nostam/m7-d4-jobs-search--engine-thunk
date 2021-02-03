@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { MdFavoriteBorder, MdFavourited, MdShare } from "react-icons/md";
+import { MdFavoriteBorder, MdFavorite, MdShare } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 const useStyles = makeStyles({
   root: {
@@ -59,13 +59,13 @@ function JobCard({ job, selected }) {
         <Button style={{ marginRight: "auto" }}>Learn More</Button>
         <IconButton
           aria-label="add to favorites"
-          onClick={() => dispatch({ type: "ADD_TO_BOOKMARK", payload: job })}
+          onClick={() => dispatch({ type: "TOGGLE_BOOKMARK", payload: job })}
         >
-          <MdFavoriteBorder
+          <MdFavorite
             style={{
-              color: bookmarks.find((job) => job.id === job.id)
-                ? "red"
-                : "gray",
+              color: bookmarks.find((entry) => entry.id === job.id)
+                ? "#dc004e"
+                : "grey",
             }}
           />
         </IconButton>

@@ -2,9 +2,12 @@ import React from "react";
 import { Grid, TextField, Button, Badge } from "@material-ui/core";
 import { FiGithub } from "react-icons/fi";
 import { MdFavorite } from "react-icons/md";
+import { connect } from "react-redux";
 // import Cities from "cities-list";
 import "./styles.css";
-export default class Home extends React.Component {
+
+const mapStateToProps = (state) => state;
+class Search extends React.Component {
   state = { query: { position: "", location: "" } };
 
   handleSearchInput = (e) => {
@@ -67,7 +70,7 @@ export default class Home extends React.Component {
           </Grid>
           {/* <Button onClick={() => this.props.searchJobs(query)}>Search</Button> */}
           <Badge
-            badgeContent={1}
+            badgeContent={this.props.bookmarks.length}
             max={99}
             color="secondary"
             onClick={() => this.props.history.push("/favourite")}
@@ -80,3 +83,4 @@ export default class Home extends React.Component {
     );
   }
 }
+export default connect(mapStateToProps)(Search);

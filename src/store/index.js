@@ -5,6 +5,7 @@ export const initialState = {
   bookmarks: [],
   jobs: [],
   selectedJob: {},
+  applied: [],
 };
 
 function configureStore() {

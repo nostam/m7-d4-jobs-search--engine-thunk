@@ -28,6 +28,11 @@ class App extends React.Component {
       console.log(error);
     }
   };
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.history !== this.props.history) {
+      this.setState({ err: null, jobs: [], loading: false });
+    }
+  };
   render() {
     const { jobs, loading } = this.state;
     return (

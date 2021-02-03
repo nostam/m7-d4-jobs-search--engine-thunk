@@ -14,6 +14,15 @@ export default function rootReducer(state = initialState, action) {
             ? [...state.bookmarks, action.payload]
             : state.bookmarks.filter((job) => job.id !== action.payload.id),
       };
+    case "TOGGLE_APPLY":
+      return {
+        ...state,
+        applied:
+          state.applied.length === 0 ||
+          !state.applied.some((entry) => entry.id === action.payload.id)
+            ? [...state.applied, action.payload]
+            : state.applied.filter((job) => job.id !== action.payload.id),
+      };
     case "ADD_TO_BOOKMARK":
       console.log(action.payload);
       return { ...state, bookmarks: [...state.bookmarks, action.payload] };

@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { MdFavorite, MdShare } from "react-icons/md";
+import { MdFavorite, MdDone } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 const useStyles = makeStyles({
   root: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 function JobCard({ job, selected }) {
   const dispatch = useDispatch();
-  const { bookmarks } = useSelector((state) => state);
+  const { bookmarks, applied } = useSelector((state) => state);
 
   const classes = useStyles();
   return (
@@ -44,16 +44,12 @@ function JobCard({ job, selected }) {
         />
       </a>
       <CardContent>
-        <Typography color="textSecondary" gutterBottom>
-          {job.location}
-        </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h6" component="h2" gutterBottom>
           {job.title}
         </Typography>
-        <Typography color="textSecondary">{job.type}</Typography>
-        {/* <div
-		  dangerouslySetInnerHTML={{ __html: job.description }}
-		></div> */}
+        <Typography color="textSecondary">
+          {job.location} | {job.type}
+        </Typography>
       </CardContent>
       <CardActions disableSpacing className={classes.footer}>
         <Button style={{ marginRight: "auto" }}>Learn More</Button>
@@ -69,8 +65,17 @@ function JobCard({ job, selected }) {
             }}
           />
         </IconButton>
-        <IconButton aria-label="share">
-          <MdShare />
+        <IconButton
+          aria-label="applied"
+          onClick={() => dispatch({ type: "TOGGLE_APPLY", payload: job })}
+        >
+          <MdDone
+            style={{
+              color: applied.find((entry) => entry.id === job.id)
+                ? "green"
+                : "grey",
+            }}
+          />
         </IconButton>
       </CardActions>
     </Card>

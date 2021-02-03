@@ -25,7 +25,7 @@ export default class JobList extends Component {
           <LinearProgress />
         ) : (
           <Grid container>
-            <Grid item xs={3} className="JobsListCol">
+            <Grid item md={3} className="JobsListCol">
               {this.props.jobs.map((job) => {
                 return (
                   <JobCard
@@ -36,7 +36,7 @@ export default class JobList extends Component {
                 );
               })}
             </Grid>
-            <Grid item xs={9} className="JobsListCol">
+            <Grid item md={9} className="JobsListCol">
               <JobDetail job={this.state.selectedJob} />
             </Grid>
           </Grid>

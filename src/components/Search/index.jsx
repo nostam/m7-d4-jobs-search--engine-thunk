@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, TextField, Button, Badge } from "@material-ui/core";
+import { Grid, TextField, Button, Badge, Tooltip } from "@material-ui/core";
 import { FiGithub } from "react-icons/fi";
 import { MdFavorite } from "react-icons/md";
 import { connect } from "react-redux";
@@ -70,15 +70,17 @@ class Search extends React.Component {
             />
           </Grid> */}
           {/* <Button onClick={() => this.props.searchJobs(query)}>Search</Button> */}
-          <Badge
-            badgeContent={this.props.bookmarks.length}
-            max={99}
-            color="secondary"
-            onClick={() => this.props.history.push("/favourite")}
-            style={{ alignSelf: "center", margin: "1rem" }}
-          >
-            <MdFavorite size="24" color="grey" />
-          </Badge>
+          <Tooltip title="Bookmarks">
+            <Badge
+              badgeContent={this.props.bookmarks.length}
+              max={99}
+              color="secondary"
+              onClick={() => this.props.history.push("/favourite")}
+              style={{ alignSelf: "center", margin: "1rem" }}
+            >
+              <MdFavorite size="24" color="grey" />
+            </Badge>
+          </Tooltip>
         </Grid>
       </div>
     );

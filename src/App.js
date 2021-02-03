@@ -32,7 +32,6 @@ class App extends React.Component {
       <div className="App">
         <Route
           path="/"
-          exact
           render={(props) => <Search {...props} searchJobs={this.searchJobs} />}
         />
         {/* <Route path="/job/:slug" render={(props) => <Job {...props} /> */}
@@ -42,6 +41,7 @@ class App extends React.Component {
             <JobsList {...props} jobs={jobs} loading={loading} />
           )}
         />
+        <Route path="/favourte" component={JobsList} />
       </div>
     );
   }

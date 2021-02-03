@@ -1,10 +1,12 @@
 .HomeDiv {
-  margin: 2rem;
+  margin: 1rem 2rem;
   height: 10vh;
   justify-content: center;
   align-items: center;
   display: flex !important;
   flex-direction: row;
+  overflow: hidden;
+  flex-wrap: nowrap;
 }
 .searchLogo {
   align-self: center;

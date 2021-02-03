@@ -1,6 +1,7 @@
 import React from "react";
 import { Paper, Typography } from "@material-ui/core";
 import parse from "html-react-parser";
+
 export default function JobDetail(props) {
   return (
     <div>

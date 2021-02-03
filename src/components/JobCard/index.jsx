@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { MdFavoriteBorder, MdFavorite, MdShare } from "react-icons/md";
+import { MdFavorite, MdShare } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 const useStyles = makeStyles({
   root: {

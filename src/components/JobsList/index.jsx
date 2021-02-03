@@ -11,22 +11,22 @@ export default class JobList extends Component {
   componentDidMount = () => {
     this.setState({ jobs: this.props.jobs });
   };
-  componentDidUpdate = (prevProps) => {
-    if (prevProps.toString() !== this.props.toString()) {
-      this.setState({ jobs: this.props.jobs });
-      console.log(this.props.jobs, this.state.jobs);
-    }
-  };
+  // componentDidUpdate = (prevProps) => {
+  //   if (prevProps.toString() !== this.props.toString()) {
+  //     this.setState({ jobs: this.props.jobs });
+  //     console.log(this.props.jobs, this.state.jobs);
+  //   }
+  // };
   render() {
-    const { jobs, loading } = this.props;
+    // const { jobs, loading } = this.props;
     return (
       <div>
-        {loading ? (
+        {this.props.loading ? (
           <LinearProgress />
         ) : (
           <Grid container>
             <Grid item xs={3} className="JobsListCol">
-              {jobs.map((job) => {
+              {this.props.jobs.map((job) => {
                 return (
                   <JobCard
                     job={job}

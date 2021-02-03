@@ -2,6 +2,8 @@ import React from "react";
 import { Route } from "react-router-dom";
 import Search from "./components/Search";
 import JobsList from "./components/JobsList";
+import { connect } from "react-redux";
+const mapStateToProps = (state) => state;
 class App extends React.Component {
   state = { err: null, jobs: [], loading: false };
   url = "/positions.json?";
@@ -37,13 +39,24 @@ class App extends React.Component {
         {/* <Route path="/job/:slug" render={(props) => <Job {...props} /> */}
         <Route
           path="/"
+          exact
           render={(props) => (
             <JobsList {...props} jobs={jobs} loading={loading} />
           )}
         />
-        <Route path="/favourte" component={JobsList} />
+        <Route
+          path="/favourite"
+          exact
+          render={(props) => (
+            <JobsList
+              {...props}
+              jobs={this.props.bookmarks}
+              loading={loading}
+            />
+          )}
+        />
       </div>
     );
   }
 }
-export default App;
+export default connect(mapStateToProps)(App);

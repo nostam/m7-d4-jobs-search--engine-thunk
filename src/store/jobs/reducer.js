@@ -1,14 +1,14 @@
-import { initialState } from "../";
+// import { initialState } from "../";
 import { SET_JOBS, SELECTED_JOB } from "./constants";
 
-const jobsReducer = (state = initialState.jobs, action) => {
+const jobsReducer = (state = { jobs: [], selected: {} }, action) => {
   const { type, payload } = action;
   switch (type) {
     case SET_JOBS:
-      return { state: payload };
+      return [...payload];
     case SELECTED_JOB:
       return {
-        state: payload,
+        selected: payload,
       };
     default:
       return state;

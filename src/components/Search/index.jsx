@@ -3,13 +3,13 @@ import { Grid, TextField, Button, Badge, Tooltip } from "@material-ui/core";
 import { FiGithub } from "react-icons/fi";
 import { MdBookmark } from "react-icons/md";
 import { connect } from "react-redux";
+import { setJobs } from "../../store/jobs/action";
 // import Cities from "cities-list";
 import "./styles.css";
 
 const mapStateToProps = (state) => state;
 class Search extends React.Component {
   state = { query: { position: "", location: "" } };
-
   handleSearchInput = (e) => {
     e.preventDefault();
     this.setState({

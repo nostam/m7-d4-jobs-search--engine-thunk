@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { LinearProgress, Grid } from "@material-ui/core";
+import { connect } from "react-redux";
 import JobCard from "../JobCard";
 import JobDetail from "../JobDetail";
 import "./styles.css";
-export default class JobList extends Component {
-  state = { jobs: "", selectedJob: null };
+
+const mapStateToProps = (state) => state;
+class JobList extends Component {
+  state = { selectedJob: null };
   handleSelectedJob = (job) => {
     this.setState({ selectedJob: job });
-  };
-  componentDidMount = () => {
-    this.setState({ jobs: this.props.jobs });
   };
   // componentDidUpdate = (prevProps) => {
   //   if (prevProps.toString() !== this.props.toString()) {
@@ -18,23 +18,25 @@ export default class JobList extends Component {
   //   }
   // };
   render() {
-    // const { jobs, loading } = this.props;
+    const { loading, jobs } = this.props;
+    console.log("this.props in jobslist", this.props);
     return (
       <div style={{ overflowX: "hidden" }}>
-        {this.props.loading ? (
+        {loading ? (
           <LinearProgress />
         ) : (
           <Grid container>
             <Grid item md={3} className="JobsListCol">
-              {this.props.jobs.map((job) => {
-                return (
-                  <JobCard
-                    job={job}
-                    key={job.id}
-                    selected={this.handleSelectedJob}
-                  />
-                );
-              })}
+              {jobs.length > 0 &&
+                jobs.map((job) => {
+                  return (
+                    <JobCard
+                      job={job}
+                      key={job.id}
+                      selected={this.handleSelectedJob}
+                    />
+                  );
+                })}
             </Grid>
             <Grid item md={9} className="JobsListCol">
               <JobDetail job={this.state.selectedJob} />
@@ -45,3 +47,4 @@ export default class JobList extends Component {
     );
   }
 }
+export default connect(mapStateToProps)(JobList);

@@ -58,11 +58,11 @@ function JobCard({ job, selected }) {
           onClick={() => dispatch({ type: "TOGGLE_BOOKMARK", payload: job })}
         >
           <MdBookmark
-            style={{
-              color: bookmarks.find((entry) => entry.id === job.id)
-                ? "dodgerblue"
-                : "grey",
-            }}
+          // style={{
+          //   color: bookmarks.find((entry) => entry.id === job.id)
+          //     ? "dodgerblue"
+          //     : "grey",
+          // }}
           />
         </IconButton>
         <IconButton
@@ -70,11 +70,11 @@ function JobCard({ job, selected }) {
           onClick={() => dispatch({ type: "TOGGLE_APPLY", payload: job })}
         >
           <MdDone
-            style={{
-              color: applied.find((entry) => entry.id === job.id)
-                ? "green"
-                : "grey",
-            }}
+          // style={{
+          //   color: applied.find((entry) => entry.id === job.id)
+          //     ? "green"
+          //     : "grey",
+          // }}
           />
         </IconButton>
       </CardActions>

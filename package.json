@@ -1,5 +1,5 @@
 {
-  "name": "m7-d3-jobs-search-engine-redux",
+  "name": "m7-d4-jobs-search-engine-thunk",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,6 +20,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "serve": "^11.3.2",
     "web-vitals": "^0.2.4"
   },

@@ -1,0 +1,1 @@
+export const TOGGLE_BOOKMARK = "TOGGLE_BOOKMARK";

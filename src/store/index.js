@@ -1,6 +1,13 @@
-import { createStore } from "redux";
-import rootReducer from "../reducers";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import jobsReducer from "./jobs/reducer";
+import bookmarksReducer from "./bookmarks/reducer";
+import thunk from "redux-thunk";
 
+const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const rootReducer = combineReducers({
+  jobs: jobsReducer,
+  bookmarks: bookmarksReducer,
+});
 export const initialState = {
   bookmarks: [],
   jobs: [],
@@ -10,15 +17,5 @@ export const initialState = {
 
 export default createStore(
   rootReducer,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composedEnhancer(applyMiddleware(thunk))
 );
-// TODO cannot export as a function?
-// export default function configureStore() {
-//   return createStore(
-//     rootReducer,
-//     initialState,
-//     window.__REDUX__DEVTOOLS_EXTENSION__ &&
-//       window.__REDUX_DEVTOOLS_EXTENSION__()
-//   );
-// }

@@ -27,8 +27,8 @@ const useStyles = makeStyles({
 function JobCard({ job, selected }) {
   const dispatch = useDispatch();
   const { bookmarks, applied } = useSelector((state) => state);
-
   const classes = useStyles();
+
   return (
     <Card className={classes.root} onClick={(e) => selected(job)}>
       <a
@@ -58,11 +58,13 @@ function JobCard({ job, selected }) {
           onClick={() => dispatch({ type: "TOGGLE_BOOKMARK", payload: job })}
         >
           <MdBookmark
-          // style={{
-          //   color: bookmarks.find((entry) => entry.id === job.id)
-          //     ? "dodgerblue"
-          //     : "grey",
-          // }}
+            style={{
+              color:
+                !isNaN(bookmarks) &&
+                bookmarks.find((entry) => entry.id === job.id)
+                  ? "dodgerblue"
+                  : "grey",
+            }}
           />
         </IconButton>
         <IconButton

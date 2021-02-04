@@ -9,8 +9,8 @@ const bookmarksReducer = (state = { bookmarks: [] }, action) => {
         state.bookmarks.some((entry) => entry.id === payload.id)
       );
       return [
-        state.bookmarks.applied.length === 0 ||
-        !state.bookmarks.applied.some((entry) => entry.id === payload.id)
+        state.bookmarks.length === 0 ||
+        !state.bookmarks.some((entry) => entry.id === payload.id)
           ? [...state.bookmarks, payload]
           : state.bookmarks.filter((job) => job.id !== payload.id),
       ];
